@@ -1,4 +1,22 @@
 #!/bin/bash
+
+echo "
+++++++++++++++++++++++++++++++++++++++++ 
+   
+        By
+            H0lmmes
+       
++++++++++++++++++++++++++++++++++++++++++
+"
+
+echo "Informe o cluste.name: "
+read cluster
+echo "Informe o node.name: "
+read node
+echo "Informe o ip do master: "
+read master
+
+
 ES_VERSION="7.5.1-linux-x86_64"
 ESSTACK_DIR="/elasticstack"
 ES_APPS="elasticsearch/elasticsearch kibana/kibana logstash/logstash beats/metricbeat/metricbeat beats/filebeat/filebeat beats/packetbeat/packetbeat beats/auditbeat/auditbeat apm-server/apm-server"
@@ -22,12 +40,7 @@ for APPS in $ES_APPS; do
 done
 
 
-echo "Informe o cluste.name: "
-read cluster
-echo "Informe o node.name: "
-read node
-echo "Informe o ip do master: "
-read master
+
 
 #Criação de usuário e configuração do elasticsearch
 useradd -d /opt/elastic -m elastic
