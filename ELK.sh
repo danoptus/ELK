@@ -39,21 +39,26 @@ for APPS in $ES_APPS; do
    fi
 done
 
+#Criação de usuário
+useradd -d /opt/elastic -m elastic
 
+#Config limits.conf
+echo "elastic – nofile 65536 " >> /etc/security/limits.conf  
 
+#Configura o mapeamento de memória pela heap
+echo "vm.max_map_count = 262144" >> /etc/sysctl.conf  
+sysctl -p  
 
+#Desabilita o swap
+sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab
 
-useradd -d /opt/elastic -m elastic #Criação de usuário
-echo "elastic – nofile 65536 " >> /etc/security/limits.conf  #Config limits.conf
-echo "vm.max_map_count = 262144" >> /etc/sysctl.conf  #Configura o mapeamento de memória pela heap
-sysctl -p  #Aplica as alterações
-sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab #Desabilita o swap
-systemctl enable postfix && systemctl start postfix #Habilita o serviço postfix
+#Habilita o serviço postfix
+systemctl enable postfix && systemctl start postfix 
 
+#Config das portas 9200 e 9300
+firewall-cmd --permanent --add-port=9200/tcp && firewall-cmd --permanent --add-port=9300/tcp && firewall-cmd --reload  
 
-firewall-cmd --permanent --add-port=9200/tcp && firewall-cmd --permanent --add-port=9300/tcp && firewall-cmd --reload  #Config das portas 9200 e 9300
-
-#Move, descompacta e altera permissões dos arquivos
+#Move, descompacta e altera permissões dos arquivos baixados
 cp /elasticstack/*.gz /opt/elastic 
 cd /opt/elastic/ && for i in *; do tar -xf $i;done
 chown elastic.elastic /opt/elastic/* -R  
@@ -73,7 +78,8 @@ path.data: /elasticstack/es/data
 path.logs: /elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
 
-mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R #Cria os diretórios data e logs e altera as permissões
+#Cria os diretórios data e logs e altera as permissões
+mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R 
 
 echo 
 "
