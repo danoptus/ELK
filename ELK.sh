@@ -75,6 +75,17 @@ path.logs: /elasticstack/es/logs
 
 mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R
 
+echo 
+"
+
+++++++++++++++++++++++++++
+
+Configuração finalizada
+
+++++++++++++++++++++++++++
+
+"
+
 
 
 
