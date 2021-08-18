@@ -22,6 +22,13 @@ for APPS in $ES_APPS; do
 done
 
 
+echo "Informe o cluste.name: "
+read cluster
+echo "Informe o node.name: "
+read node
+echo "Informe o ip do master: "
+read master
+
 #Criação de usuário e configuração do elasticsearch
 useradd -d /opt/elastic -m elastic
 echo "elastic – nofile 65536 " >> /etc/security/limits.conf #Configura o limits
@@ -30,15 +37,19 @@ sysctl -p
 sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab #Desabilita o swap
 systemctl enable postfix && systemctl start postfix #Habilita o serviço postfix
 firewall-cmd –permanent –add-port=9200/tcp && firewall-cmd –permanent –add-port=9300/tcp && firewall-cmd –reload #Confirua regras de firewall
-cp *.gz /opt/elastic && tar -xf /opt/elastic/* && chown elastic.elastic /opt/elastic/* -R  
 
+#Move, descompacta e altera permissões dos arquivos
+cp *.gz /opt/elastic 
+cd /opt/elastic/ && for i in *; do tar -xf $i;done
+chown elastic.elastic /opt/elastic/* -R  
+rm -f *.gz 
 
-
+#Configura o arquivo principal do elasticsearch
 echo "
 cluster.name: $cluster
-node.name: $Node
+node.name: $node
 node.attr.zone: 1
-node.attr.type: host
+node.attr.type: hot
 network.host: 0.0.0.0
 http.port: 9200
 discovery.seed_hosts: ['$master']
