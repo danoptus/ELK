@@ -49,10 +49,12 @@ echo "vm.max_map_count = 262144" >> /etc/sysctl.conf  #Configura o mapeamento de
 sysctl -p 
 sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab #Desabilita o swap
 systemctl enable postfix && systemctl start postfix #Habilita o serviço postfix
-firewall-cmd –permanent –add-port=9200/tcp && firewall-cmd –permanent –add-port=9300/tcp && firewall-cmd –reload #Confirua regras de firewall
+
+#Config das portas 9200 e 9300
+firewall-cmd --permanent --add-port=9200/tcp && firewall-cmd --permanent --add-port=9300/tcp && firewall-cmd --reload 
 
 #Move, descompacta e altera permissões dos arquivos
-cp *.gz /opt/elastic 
+cp /elasticstack/*.gz /opt/elastic 
 cd /opt/elastic/ && for i in *; do tar -xf $i;done
 chown elastic.elastic /opt/elastic/* -R  
 rm -f *.gz 
