@@ -137,7 +137,13 @@ sleep 2
 
 #Configura o arquivo principal do elasticsearch
 
-for i in `cat *.txt`; do 
+for i in `cat *.txt`
+do 
+echo $i >> masters.txt
+done
+
+for i in `cat masters.txt`
+do 
 echo "
 cluster.name: $cluster
 node.name: $node
