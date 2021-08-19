@@ -16,10 +16,12 @@ clear
 echo "                            
                               
                               
-                              Iniciando a instalação e configuração do ElasticSearch
-                              ---------------------------------------------------------
+ Iniciando a instalação e configuração do ElasticSearch
+ ---------------------------------------------------------
 
 "
+
+sleep 3
 
 
 ES_VERSION="7.5.1-linux-x86_64"
