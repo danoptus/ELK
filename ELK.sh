@@ -33,6 +33,7 @@ echo "
 Informe o IP do Master:
 "
 read master
+echo "'$master'," > masters$i.txt
 esac
 
 case $quantidade_masters in 
@@ -136,7 +137,7 @@ sleep 2
 
 #Configura o arquivo principal do elasticsearch
 
-for i in ´cat *.txt´; do 
+for i in `cat *.txt`; do 
 echo "
 cluster.name: $cluster
 node.name: $node
