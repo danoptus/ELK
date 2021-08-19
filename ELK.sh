@@ -81,8 +81,7 @@ path.logs: /elasticstack/es/logs
 #Cria os diretórios data e logs e altera as permissões
 mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R 
 
-echo 
-"
+echo "
 
 ++++++++++++++++++++++++++
 
