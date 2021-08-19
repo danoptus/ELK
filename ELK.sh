@@ -15,9 +15,6 @@ read cluster
 echo "
 Informe o node.name: "
 read node
-echo "
-Informe o ip do master: "
-read master
 
 echo "
 Informe a quantidade de masters:
