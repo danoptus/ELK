@@ -9,12 +9,68 @@ echo "
 +++++++++++++++++++++++++++++++++++++++++
 "
 
-echo "Informe o cluste.name: "
+echo "
+Informe o cluste.name: "
 read cluster
-echo "Informe o node.name: "
+echo "
+Informe o node.name: "
 read node
-echo "Informe o ip do master: "
+echo "
+Informe o ip do master: "
 read master
+
+echo "
+Informe a quantidade de masters:
+[1]
+[2]
+[3]
+[4]
+"
+read quantidade_masters
+
+
+case $quantidade_masters in 
+      [1]
+clear
+echo " 
+Informe o IP do Master:
+"
+read master
+esac
+
+case
+$quantidade_masters in 
+    [2]
+    for i in {1..2} ;
+    do echo "
+    Informe o ip dos master $i: "
+    read master;
+    echo "'$master'," > masters$i.txt;
+    done
+ esac
+
+
+case $quantidade_masters in 
+    [3]
+    for i in {1..3} ;
+    do echo "
+    Informe o ip dos master $i: "
+    read master;
+    echo "'$master'," > masters$i.txt;
+    done
+ esac
+ 
+ 
+ case $quantidade_masters in 
+    [4]
+    for i in {1..4} ;
+    do echo "
+    Informe o ip dos master $i: "
+    read master;
+    echo "'$master'," > masters$i.txt;
+    done
+ esac
+
 
 
 ES_VERSION="7.5.1-linux-x86_64"
@@ -81,6 +137,8 @@ Configurando o elasticsearch.yml
 sleep 2
 
 #Configura o arquivo principal do elasticsearch
+
+for i in *.txt; do 
 echo "
 cluster.name: $cluster
 node.name: $node
@@ -88,8 +146,8 @@ node.attr.zone: 1
 node.attr.type: hot
 network.host: 0.0.0.0
 http.port: 9200
-discovery.seed_hosts: ['$master']
-cluster.initial_master_nodes: ['$master']
+discovery.seed_hosts: ['$i']
+cluster.initial_master_nodes: ['$i']
 path.data: /elasticstack/es/data
 path.logs: /elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
