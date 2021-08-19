@@ -38,36 +38,35 @@ Informe o IP do Master:
 read master
 esac
 
-case
-$quantidade_masters in 
-    [2]
-    for i in {1..2} ;
+case $quantidade_masters in 
+    2)
+    for i in {1..2} 
     do echo "
-    Informe o ip dos master $i: "
-    read master;
-    echo "'$master'," > masters$i.txt;
+ Informe o ip dos master $i: "
+    read master
+    echo "'$master'," > masters$i.txt
     done
  esac
 
 
 case $quantidade_masters in 
-    [3]
-    for i in {1..3} ;
+    3)
+    for i in {1..3} 
     do echo "
-    Informe o ip dos master $i: "
-    read master;
-    echo "'$master'," > masters$i.txt;
+ Informe o ip dos master $i: "
+    read master
+    echo "'$master'," > masters$i.txt
     done
  esac
  
  
  case $quantidade_masters in 
-    [4]
-    for i in {1..4} ;
+    4)
+    for i in {1..4} 
     do echo "
-    Informe o ip dos master $i: "
-    read master;
-    echo "'$master'," > masters$i.txt;
+Informe o ip dos master $i: "
+    read master
+    echo "'$master'," > masters$i.txt
     done
  esac
 
