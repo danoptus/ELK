@@ -42,7 +42,7 @@ case $quantidade_masters in
     do echo "
  Informe o ip dos master $i: "
     read master
-    echo "'$master'," > masters$i.txt
+    echo "'$master'," >> masters$i.txt
     done
  esac
 
@@ -53,7 +53,7 @@ case $quantidade_masters in
     do echo "
  Informe o ip dos master $i: "
     read master
-    echo "'$master'," > masters$i.txt
+    echo "'$master'," >> masters$i.txt
     done
  esac
  
@@ -64,7 +64,7 @@ case $quantidade_masters in
     do echo "
 Informe o ip dos master $i: "
     read master
-    echo "'$master'," > masters$i.txt
+    echo "'$master'," >> masters$i.txt
     done
  esac
 
