@@ -59,10 +59,26 @@ systemctl enable postfix && systemctl start postfix
 firewall-cmd --permanent --add-port=9200/tcp && firewall-cmd --permanent --add-port=9300/tcp && firewall-cmd --reload  
 
 #Move, descompacta e altera permissões dos arquivos baixados
+clear
+echo "
+Movendo os arquivos para /opt/elastic
+--------------------------------------
+"
 cp /elasticstack/*.gz /opt/elastic 
+
+echo "
+Descompactando os arquivos em /opt/elastic
+------------------------------------------
+"
 cd /opt/elastic/ && for i in *; do tar -xf $i;done
 chown elastic.elastic /opt/elastic/* -R  
 rm -f *.gz 
+
+echo "
+Configurando o elasticsearch.yml
+----------------------------------
+"
+sleep 2
 
 #Configura o arquivo principal do elasticsearch
 echo "
