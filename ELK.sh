@@ -9,21 +9,17 @@ echo "
 +++++++++++++++++++++++++++++++++++++++++
 "
 
-echo "
-Informe o cluste.name: "
-read cluster
-echo "
-Informe o node.name: "
-read node
+sleep 3
 
-echo "
-Informe a quantidade de masters:
-[1]
-[2]
-[3]
-[4]
+clear
+
+echo "                            
+                              
+                              
+                              Iniciando a instalação e configuração do ElasticSearch
+                              ---------------------------------------------------------
+
 "
-read quantidade_masters
 
 
 ES_VERSION="7.5.1-linux-x86_64"
@@ -91,6 +87,23 @@ Configurando o elasticsearch.yml
 sleep 2
 
 #Configura o arquivo principal do elasticsearch
+
+
+echo "
+Informe o cluste.name: "
+read cluster
+echo "
+Informe o node.name: "
+read node
+
+echo "
+Informe a quantidade de masters:
+[1]
+[2]
+[3]
+[4]
+"
+read quantidade_masters
 
 case $quantidade_masters in 
       1)
