@@ -26,50 +26,6 @@ Informe a quantidade de masters:
 read quantidade_masters
 
 
-case $quantidade_masters in 
-      1)
-
-echo " 
-Informe o IP do Master:
-"
-read master
-echo "'$master'," > masters$i.txt
-esac
-
-case $quantidade_masters in 
-    2)
-    for i in {1..2} 
-    do echo "
- Informe o ip dos master $i: "
-    read master
-    echo "'$master'," >> masters$i.txt
-    done
- esac
-
-
-case $quantidade_masters in 
-    3)
-    for i in {1..3} 
-    do echo "
- Informe o ip dos master $i: "
-    read master
-    echo "'$master'," >> masters$i.txt
-    done
- esac
- 
- 
- case $quantidade_masters in 
-    4)
-    for i in {1..4} 
-    do echo "
-Informe o ip dos master $i: "
-    read master
-    echo "'$master'," >> masters$i.txt
-    done
- esac
-
-
-
 ES_VERSION="7.5.1-linux-x86_64"
 ESSTACK_DIR="/elasticstack"
 ES_APPS="elasticsearch/elasticsearch kibana/kibana logstash/logstash beats/metricbeat/metricbeat beats/filebeat/filebeat beats/packetbeat/packetbeat beats/auditbeat/auditbeat apm-server/apm-server"
@@ -127,7 +83,6 @@ cd /opt/elastic/ && for i in *; do tar -xf $i;done
 chown elastic.elastic /opt/elastic/* -R  
 rm -f *.gz 
 
-cd /root/ELK/
 
 echo "
 Configurando o elasticsearch.yml
@@ -137,13 +92,14 @@ sleep 2
 
 #Configura o arquivo principal do elasticsearch
 
-for i in `cat *.txt`
-do 
-echo $i >> masters.txt
-done
+case $quantidade_masters in 
+      1)
 
-for i in `cat masters.txt`
-do 
+echo " 
+Informe o IP do Master:
+"
+read master
+
 echo "
 cluster.name: $cluster
 node.name: $node
@@ -151,16 +107,101 @@ node.attr.zone: 1
 node.attr.type: hot
 network.host: 0.0.0.0
 http.port: 9200
-discovery.seed_hosts: ['$i']
-cluster.initial_master_nodes: ['$i']
+discovery.seed_hosts: ['$master']
+cluster.initial_master_nodes: ['$master']
 path.data: /elasticstack/es/data
 path.logs: /elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
-done
+
+esac
+
+case $quantidade_masters in 
+    2)
+     echo "
+Informe o ip dos master 1: "
+    read master1
+      echo "
+Informe o ip dos master 2: "
+    read master2
+    
+ echo "
+cluster.name: $cluster
+node.name: $node
+node.attr.zone: 1
+node.attr.type: hot
+network.host: 0.0.0.0
+http.port: 9200
+discovery.seed_hosts: ['$master1','$master2']
+cluster.initial_master_nodes: ['$master1','$master2']
+path.data: /elasticstack/es/data
+path.logs: /elasticstack/es/logs 
+"  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
+ esac
+
+
+case $quantidade_masters in 
+    3)
+    echo "
+Informe o ip dos master 1: "
+    read master1
+    echo "
+Informe o ip dos master 2: "
+    read master2
+    echo "
+Informe o ip dos master 3: "
+    read master3
+    
+ echo "
+cluster.name: $cluster
+node.name: $node
+node.attr.zone: 1
+node.attr.type: hot
+network.host: 0.0.0.0
+http.port: 9200
+discovery.seed_hosts: ['$master1','$master2','$master3']
+cluster.initial_master_nodes: ['$master1','$master2','$master3']
+path.data: /elasticstack/es/data
+path.logs: /elasticstack/es/logs 
+"  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
+
+ esac
+ 
+ 
+ case $quantidade_masters in 
+    4)
+   echo "
+Informe o ip dos master 1: "
+    read master1
+    echo "
+Informe o ip dos master 2: "
+    read master2
+    echo "
+Informe o ip dos master 3: "
+    read master3
+   echo "
+Informe o ip dos master 4: "
+    read master4
+    
+echo "
+cluster.name: $cluster
+node.name: $node
+node.attr.zone: 1
+node.attr.type: hot
+network.host: 0.0.0.0
+http.port: 9200
+discovery.seed_hosts: ['$master1','$master2','$master3','$master4']
+cluster.initial_master_nodes: ['$master1','$master2','$master3','$master4']
+path.data: /elasticstack/es/data
+path.logs: /elasticstack/es/logs 
+"  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
+    
+ esac
+ 
+
 
 #Cria os diretórios data e logs e altera as permissões
 mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R 
-rm -f *.txt
+
 
 echo "
 
