@@ -126,6 +126,8 @@ cd /opt/elastic/ && for i in *; do tar -xf $i;done
 chown elastic.elastic /opt/elastic/* -R  
 rm -f *.gz 
 
+cd /root/
+
 echo "
 Configurando o elasticsearch.yml
 ----------------------------------
@@ -134,7 +136,7 @@ sleep 2
 
 #Configura o arquivo principal do elasticsearch
 
-for i in *.txt; do 
+for i in ´cat *.txt´; do 
 echo "
 cluster.name: $cluster
 node.name: $node
@@ -151,6 +153,7 @@ done
 
 #Cria os diretórios data e logs e altera as permissões
 mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R 
+rm -f *.txt
 
 echo "
 
