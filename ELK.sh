@@ -150,6 +150,7 @@ cluster.initial_master_nodes: ['$i']
 path.data: /elasticstack/es/data
 path.logs: /elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
+done
 
 #Cria os diretórios data e logs e altera as permissões
 mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R 
@@ -158,7 +159,7 @@ echo "
 
 ++++++++++++++++++++++++++
 
-Configuração finalizada
+Configuração finalizada :)
 
 ++++++++++++++++++++++++++
 
