@@ -127,7 +127,7 @@ cd /opt/elastic/ && for i in *; do tar -xf $i;done
 chown elastic.elastic /opt/elastic/* -R  
 rm -f *.gz 
 
-cd /root/
+cd /root/ELK/
 
 echo "
 Configurando o elasticsearch.yml
