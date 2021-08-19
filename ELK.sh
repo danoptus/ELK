@@ -27,7 +27,7 @@ read quantidade_masters
 
 
 case $quantidade_masters in 
-      [1]
+      1)
 
 echo " 
 Informe o IP do Master:
