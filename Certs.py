@@ -12,9 +12,9 @@ print ("""
  
 os.system("sleep 3")
  
-masters = int(input("\n Informe a quantidade de masters no ambiente: "))
+masters = int(input("\nInforme a quantidade de masters no ambiente: "))
 datas =   int(input("\nInforme a quantidade de datas no ambiente: "))
- 
+os.system("clear") 
  
  #Gera CA auto assinada
 print ("""
