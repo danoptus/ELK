@@ -23,8 +23,7 @@ print ("""
  #################################
  """)
 os.system("sleep 2")
-os.system("mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs
-/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil ca --out /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --pass")
+os.system("mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs && /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil ca --out /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --pass")
  
  
  #Gerando certificado para os datas e masters
