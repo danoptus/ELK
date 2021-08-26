@@ -2,14 +2,14 @@ import os
 os.system("clear"
 
 
-print """
+print ("""
 
 ++++++++++++++++++++++++++++++++++++++++++
  
  Iniciando o ajuste dos certificados
  
 ++++++++++++++++++++++++++++++++++++++++++
- """
+ """)
  
  os.system("sleep 3")
  
@@ -18,11 +18,11 @@ datas = input( "\nInforme a quantidade de datas no ambiente: ")
  
  
  #Gera CA auto assinada
- print """
+ print ("""
  ##################################
  Gerando certificado auto-assinado
  #################################
- """
+ """)
  os.system("sleep 2")
  os.system("mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs
  /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil ca --out /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --pass")
