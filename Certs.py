@@ -77,5 +77,15 @@ else:
  os.system("clear")
  
  
+ 
+ print("""
+ 
+ ######################
+ Certificados ajustados
+ ######################
+ 
+ """)
+ 
+ 
 
  
