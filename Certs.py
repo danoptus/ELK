@@ -1,6 +1,5 @@
 import os
-os.system("clear"
-
+os.system("clear")
 
 print ("""
 
