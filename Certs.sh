@@ -29,8 +29,8 @@ read datas
  #################################
  "
  sleep 2
- mkdir /opt/elastic/elasticsearch-7.5.1/config/certs
- ./bin/elasticsearch-certutil ca --out /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --pass
+ mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs
+ /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil ca --out /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --pass
  
  #Gerando certificado para os datas e masters
  
@@ -41,13 +41,13 @@ read datas
   echo "
   Informe o ip dos hosts masters: "
   read ip
-  ./bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-$i.p12 --pass
+  /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-$i.p12 --pass
  
  else
  echo "
  Informe o ip do host master: "
  read ip
- ./bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-1.p12 --pass
+ /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-1.p12 --pass
  
  
  if $datas > 1
@@ -57,13 +57,13 @@ read datas
   echo "
   Informe o ip dos hosts datas: "
   read ip
-  ./bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/data-$i.p12 --pass
+ /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/data-$i.p12 --pass
  
  else
  echo "
  Informe o ip do host data: "
  read ip
- ./bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/data-1.p12 --pass
+ /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/data-1.p12 --pass
  
  
  
