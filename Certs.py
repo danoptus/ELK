@@ -30,7 +30,7 @@ os.system("mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs && /opt/elasti
  
 if masters > 1:
     for i in range(masters):
-     ip =  input("\nInforme o ip dos hosts masters: "
+     ip =  input("\nInforme o ip dos hosts masters: ")
      os.system("/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip"+ip+" --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-"+i".p12 --pass")
      
   
