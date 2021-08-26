@@ -63,7 +63,7 @@ print("""
 if datas > 1:
     for i in range(datas):
       i = i+1
-      ip =  input("\nInforme o ip do master-{}: ".format(i))
+      ip =  input("\nInforme o ip do data-{}: ".format(i))
       os.system("clear")
       config_certs  = "/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca  /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip {}  --out /opt/elastic/elasticsearch-7.5.1/config/certs/data-{}.p12 --pass".format(ip,i)
       os.system(config_certs)
@@ -71,7 +71,7 @@ if datas > 1:
      
   
 else:
- ip = input("\nInforme o ip do master-1: ")
+ ip = input("\nInforme o ip do data-1: ")
  config_certs = "/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca  /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip {} --out /opt/elastic/elasticsearch-7.5.1/config/certs/data-1.p12 --pass".format(ip)
  os.system(config_certs)
  os.system("clear")
