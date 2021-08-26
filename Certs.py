@@ -36,7 +36,7 @@ print("""
  
 if masters > 1:
     for i in range(masters):
-       i = i+1
+      i = i+1
       ip =  input("\nInforme o ip do master-{}: ".format(i))
       config_certs  = "/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca  /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip {}  --out /opt/elastic/elasticsearch-7.5.1/config/certs/master-{}.p12 --pass".format(ip,i)
       os.system(config_certs)
