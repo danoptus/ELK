@@ -13,7 +13,7 @@ print ("""
 os.system("sleep 3")
  
 masters = int(input("\n Informe a quantidade de masters no ambiente: "))
-datas = int(input( "\nInforme a quantidade de datas no ambiente: "))
+datas =   int(input("\nInforme a quantidade de datas no ambiente: "))
  
  
  #Gera CA auto assinada
@@ -27,8 +27,8 @@ os.system("mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs && /opt/elasti
  
  
  #Gerando certificado para os datas e masters
- os.system("clear")
- print("""
+os.system("clear")
+print("""
  #########################################
  Criando certificados para o server master
  #########################################
