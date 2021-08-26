@@ -31,12 +31,12 @@ os.system("mkdir -p /opt/elastic/elasticsearch-7.5.1/config/certs && /opt/elasti
 if masters > 1:
     for i in range(masters):
      ip =  input("\nInforme o ip dos hosts masters: ")
-     os.system("/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip"+ip+" --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-"+i".p12 --pass")
+     os.system("/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip"{}" --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-"{}".p12 --pass".format(ip,i))
      
   
 else
  ip = input("\nInforme o ip do host master: ")
- os.system("/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip"+ip+" --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-1.p12 --pass")
+ os.system("/opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip"{}" --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-1.p12 --pass".format(ip))
  
  '''
  if $datas > 1
