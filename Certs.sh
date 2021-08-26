@@ -42,13 +42,14 @@ read datas
   Informe o ip dos hosts masters: "
   read ip
   /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-$i.p12 --pass
- 
+  done
+  
  else
  echo "
  Informe o ip do host master: "
  read ip
  /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/master-1.p12 --pass
- 
+ fi
  
  if $datas > 1
  then
@@ -58,13 +59,14 @@ read datas
   Informe o ip dos hosts datas: "
   read ip
  /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/data-$i.p12 --pass
- 
+  done
+  
  else
  echo "
  Informe o ip do host data: "
  read ip
  /opt/elastic/elasticsearch-7.5.1/bin/elasticsearch-certutil cert --ca /opt/elastic/elasticsearch-7.5.1/config/certs/ca.p12 --ca-pass --ip $ip --out /opt/elastic/elasticsearch-7.5.1/config/certs/certs/data-1.p12 --pass
- 
+ fi
  
  
  
