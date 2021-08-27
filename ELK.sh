@@ -31,7 +31,7 @@ sleep 3
 
 
 ES_VERSION="7.5.1-linux-x86_64"
-ESSTACK_DIR="/elasticstack"
+ESSTACK_DIR="/opt/elasticstack"
 ES_APPS="elasticsearch/elasticsearch kibana/kibana logstash/logstash beats/metricbeat/metricbeat beats/filebeat/filebeat beats/packetbeat/packetbeat beats/auditbeat/auditbeat apm-server/apm-server"
 
 # Desabilitando o IPV6
@@ -85,7 +85,7 @@ echo "
 Movendo os arquivos para /opt/elastic
 --------------------------------------
 "
-cp /elasticstack/*.gz /opt/elastic 
+cp /opt/elasticstack/*.gz /opt/elastic 
 
 echo "
 Descompactando os arquivos em /opt/elastic
@@ -137,8 +137,8 @@ network.host: 0.0.0.0
 http.port: 9200
 discovery.seed_hosts: ['$master']
 cluster.initial_master_nodes: ['$master']
-path.data: /elasticstack/es/data
-path.logs: /elasticstack/es/logs 
+path.data: /opt/elasticstack/es/data
+path.logs: /opt/elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
 
 esac
@@ -161,8 +161,8 @@ network.host: 0.0.0.0
 http.port: 9200
 discovery.seed_hosts: ['$master1','$master2']
 cluster.initial_master_nodes: ['$master1','$master2']
-path.data: /elasticstack/es/data
-path.logs: /elasticstack/es/logs 
+path.data: /opt/elasticstack/es/data
+path.logs: /opt/elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
  esac
 
@@ -188,8 +188,8 @@ network.host: 0.0.0.0
 http.port: 9200
 discovery.seed_hosts: ['$master1','$master2','$master3']
 cluster.initial_master_nodes: ['$master1','$master2','$master3']
-path.data: /elasticstack/es/data
-path.logs: /elasticstack/es/logs 
+path.data: /opt/elasticstack/es/data
+path.logs: /opt/elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
 
  esac
@@ -219,8 +219,8 @@ network.host: 0.0.0.0
 http.port: 9200
 discovery.seed_hosts: ['$master1','$master2','$master3','$master4']
 cluster.initial_master_nodes: ['$master1','$master2','$master3','$master4']
-path.data: /elasticstack/es/data
-path.logs: /elasticstack/es/logs 
+path.data: /opt/elasticstack/es/data
+path.logs: /opt/elasticstack/es/logs 
 "  > /opt/elastic/elasticsearch-7.5.1/config/elasticsearch.yml
     
  esac
@@ -228,7 +228,7 @@ path.logs: /elasticstack/es/logs
 
 
 #Cria os diretórios data e logs e altera as permissões
-mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown $username.$username /elasticstack/es/* -R 
+mkdir -p /opt/elasticstack/es/logs && mkdir -p /opt/elasticstack/es/data && chown $username.$username /opt/elasticstack/es/* -R 
 
 
 echo "
