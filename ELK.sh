@@ -14,8 +14,7 @@ sleep 3
 clear
 
 echo "
-Informe o seu username:  
-"
+Informe o seu username: "
 read username
 
 clear
@@ -91,7 +90,7 @@ Descompactando os arquivos em /opt/elastic
 ------------------------------------------
 "
 cd /opt/elastic/ && for i in *; do tar -xf $i;done
-chown $username.$username /opt/elastic/* -R  
+chown $username.$username -R /opt/elastic  
 rm -f *.gz 
 
 
