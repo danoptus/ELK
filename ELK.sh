@@ -13,6 +13,13 @@ sleep 3
 
 clear
 
+echo "
+Informe o seu username:  
+"
+read username
+
+clear
+
 echo "                            
                               
                               
@@ -51,7 +58,12 @@ done
 useradd -d /opt/elastic -m elastic
 
 #Config limits.conf
-echo "elastic – nofile 65536 " >> /etc/security/limits.conf  
+echo "
+$username   nofile    65536
+$username   hard    nofile    65536
+$username   soft    nofile    65536
+$username   hard    nofile    65536 
+" >> /etc/security/limits.conf  
 
 #Configura o mapeamento de memória pela heap
 echo "vm.max_map_count = 262144" >> /etc/sysctl.conf  
