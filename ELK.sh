@@ -38,6 +38,9 @@ ES_APPS="elasticsearch/elasticsearch kibana/kibana logstash/logstash beats/metri
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
+#Instalando WGET
+yum install wget -y 
+
 # Criando diretório de instalacao
 mkdir -p /opt/elastic
 
