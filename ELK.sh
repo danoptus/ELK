@@ -56,16 +56,15 @@ for APPS in $ES_APPS; do
    fi
 done
 
-#Criação de usuário
-#useradd -d /opt/elastic -m elastic
 
 #Config limits.conf
 echo "
-$username   nofile    65536
+$username   soft    nofile    65536
 $username   hard    nofile    65536
 $username   soft    nofile    65536
 $username   hard    nofile    65536 
 " >> /etc/security/limits.conf  
+
 
 #Configura o mapeamento de memória pela heap
 echo "vm.max_map_count = 262144" >> /etc/sysctl.conf  
@@ -103,9 +102,8 @@ Configurando o elasticsearch.yml
 "
 sleep 2
 
+
 #Configura o arquivo principal do elasticsearch
-
-
 echo "
 Informe o cluste.name: "
 read cluster
