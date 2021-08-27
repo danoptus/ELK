@@ -55,7 +55,7 @@ for APPS in $ES_APPS; do
 done
 
 #Criação de usuário
-useradd -d /opt/elastic -m elastic
+#useradd -d /opt/elastic -m elastic
 
 #Config limits.conf
 echo "
@@ -91,7 +91,7 @@ Descompactando os arquivos em /opt/elastic
 ------------------------------------------
 "
 cd /opt/elastic/ && for i in *; do tar -xf $i;done
-chown elastic.elastic /opt/elastic/* -R  
+chown $username.$username /opt/elastic/* -R  
 rm -f *.gz 
 
 
@@ -228,7 +228,7 @@ path.logs: /elasticstack/es/logs
 
 
 #Cria os diretórios data e logs e altera as permissões
-mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown elastic.elastic /elasticstack/es/* -R 
+mkdir -p /elasticstack/es/logs && mkdir -p /elasticstack/es/data && chown $username.$username /elasticstack/es/* -R 
 
 
 echo "
