@@ -33,13 +33,13 @@ sleep 3
 ES_VERSION="7.5.1-linux-x86_64"
 ESSTACK_DIR="/elasticstack"
 ES_APPS="elasticsearch/elasticsearch kibana/kibana logstash/logstash beats/metricbeat/metricbeat beats/filebeat/filebeat beats/packetbeat/packetbeat beats/auditbeat/auditbeat apm-server/apm-server"
+
 # Desabilitando o IPV6
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 # Criando diretório de instalacao
 mkdir -p /opt/elastic
-mkdir -p $ESSTACK_DIR/datasets
 
 #Instalando as ferramentas do SO
 yum install -y tzdata net-tools curl git
